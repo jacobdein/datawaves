@@ -4,6 +4,11 @@
 # Django
 venv
 
+# gulp
+node_modules
+
+# sass
+.sass-cache/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

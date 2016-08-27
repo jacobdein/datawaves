@@ -1,0 +1,31 @@
+{
+  "name": "Egeiro",
+  "version": "0.0.1",
+  "description": "Website for Egeiro, LLC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "?.git"
+  },
+  "author": "Jacob Dein",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^1.8.3",
+    "del": "^1.1.1",
+    "gulp": "^3.8.10",
+    "gulp-compass": "^2.0.3",
+    "gulp-concat": "^2.4.3",
+    "gulp-exec": "^2.1.2",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.1.0",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-minify-html": "^0.1.8",
+    "gulp-uglify": "^1.0.2",
+    "gulp-util": "^3.0.1",
+    "imagemin-pngquant": "^4.0.0"
+  }
+}

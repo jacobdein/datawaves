@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>signalin - sound {{ sound.name }}</title>
+	</head>
+	<body>
+		<header>
+			<h1>signalin</h1>
+			<section>
+				<h2>sound - {{ sound.name }}</h2>
+				<h3>id - {{ sound.sound_id }}</h3>
+			</section>
+		</header>
+		<main>
+			<p>date: {{ sound.date }}</p>
+			<p>time: {{ sound.time }}</p>
+			<p>quality: {{ sound.quality }}</p>
+			<p>collection: {{ sound.collection_id }}</p>
+			<p>sensor: {{ sound.sensor_id }}</p>
+			<p>site: {{ sound.site_id }}</p>
+		</main>
+	</body>
+</html>
