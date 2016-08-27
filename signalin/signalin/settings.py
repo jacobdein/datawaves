@@ -55,7 +55,9 @@ ROOT_URLCONF = 'signalin.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+			os.path.join(os.path.dirname(BASE_DIR), 'builds/development/static/html'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +69,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'signalin.wsgi.application'
 
@@ -123,5 +126,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+STATICFILES_DIRS = (
+	os.path.join(os.path.dirname(BASE_DIR), 'builds/development/static'),
+)
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'builds/development/collectstatic')
 
 STATIC_URL = '/static/'
