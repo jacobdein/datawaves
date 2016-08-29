@@ -19,13 +19,19 @@
 				<source src="{{ sound_preview }}" type="audio/mpeg">
 				Your browser does not support the <code>audio</code> element.
 			</audio>
-			<p>date: {{ sound.date }}</p>
-			<p>time: {{ sound.time }}</p>
-			<p>quality: {{ sound.quality }}</p>
-			<p>collection: {{ sound.collection }}</p>
-			<p>sensor: {{ sound.sensor }}</p>
-			<p>site: {{ sound.site }}</p>
-			<p>path: {{ path }}
+			<section>
+				<h3>file data</h3>
+				<p>date: {{ sound.date }}</p>
+				<p>time: {{ sound.time }}</p>
+				<p>quality: {{ sound.quality }}</p>
+				<p>collection: {{ sound.collection }}</p>
+				<p>sensor: {{ sound.sensor }}</p>
+			</section>
+			<section>
+				<h3>site data</h3>
+				<p>name: {{ sound.site.name }}</p>
+				<p>id: {{ sound.site.id }}</p>
+			</section>
 		</main>
 	</body>
 </html>
