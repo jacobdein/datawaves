@@ -35,6 +35,7 @@ INSTALLED_APPS = [
 	'browse.apps.BrowseConfig',
 	'database.apps.DatabaseConfig',
 	'utilities.apps.UtilitiesConfig',
+	'weather.apps.WeatherConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
