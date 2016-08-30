@@ -34,8 +34,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 	'browse.apps.BrowseConfig',
 	'database.apps.DatabaseConfig',
+	'metrics.apps.MetricsConfig',
 	'utilities.apps.UtilitiesConfig',
 	'weather.apps.WeatherConfig',
+	'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

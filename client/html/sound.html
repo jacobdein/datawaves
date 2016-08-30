@@ -1,38 +1,44 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>signalin - sound {{ sound.name }}</title>
+		<title>signalin | sound {{ sound.name }}</title>
+		<link href="{% static "styles/style.css" %}" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<header>
-			<h1>sound - {{ sound.name }}</h1>
+			<h1>sound | {{ sound.name }}</h1>
 			<section>
-				<h2>id - {{ sound.id }}</h2>
+				<h2>id | {{ sound.id }}</h2>
 			</section>
 		</header>
 		<main>
-			<div>
-				<img src="{{ spectrogram_image }}" alt="spectrogram"/>
+			<div id="sound_preview">
+				<img id="spectrogram" src="{{ spectrogram_image }}" alt="spectrogram"/>
+				<audio controls>
+					<source src="{{ sound_preview }}" type="audio/mpeg">
+					Your browser does not support the <code>audio</code> element.
+				</audio>
 			</div>
-			<audio controls>
-				<source src="{{ sound_preview }}" type="audio/mpeg">
-				Your browser does not support the <code>audio</code> element.
-			</audio>
-			<section>
-				<h3>file data</h3>
-				<p>date: {{ sound.date }}</p>
-				<p>time: {{ sound.time }}</p>
-				<p>quality: {{ sound.quality }}</p>
-				<p>collection: {{ sound.collection }}</p>
-				<p>sensor: {{ sound.sensor }}</p>
-			</section>
-			<section>
-				<h3>site data</h3>
-				<p>name: {{ sound.site.name }}</p>
-				<p>id: {{ sound.site.id }}</p>
-			</section>
-			{% include "weather/weather.html" %}
+			<section id="data">
+				<div>
+					<h3>file data</h3>
+					<p>date: {{ sound.date }}</p>
+					<p>time: {{ sound.time }}</p>
+					<p>quality: {{ sound.quality }}</p>
+					<p>collection: {{ sound.collection }}</p>
+					<p>sensor: {{ sound.sensor }}</p>
+				</div>
+				<div>
+					<h3>site data</h3>
+					<p>name: {{ sound.site.name }}</p>
+					<p>id: {{ sound.site.id }}</p>
+				</div>
+				{% include "weather/weather.html" %}
+				{% include "metrics/metrics.html" %}
+			</section>	
 		</main>
 	</body>
 </html>

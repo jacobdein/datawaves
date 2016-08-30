@@ -1,0 +1,37 @@
+@font-face {
+	font-family: 'Input Sans Regular';
+	src: local('InputSans-Regular');
+}
+
+@font-face {
+	font-family: 'Input Serif Regular';
+	src: local('InputSerif-Regular');
+}
+
+@font-face {
+	font-family: 'Input Mono Regular';
+	src: local('InputMono-Regular');
+}
+
+@font-face {
+	font-family: 'Input Sans Bold';
+	src: local('InputSans-Bold');
+}
+
+@font-face {
+	font-family: 'Input Serif Bold';
+	src: local('InputSerif-Bold');
+}
+
+@font-face {
+	font-family: 'Input Mono Bold';
+	src: local('InputMono-Bold');
+}
+
+$MONO: 'Input Mono Regular', monospace;
+$SANS: 'Input Sans Regular', sans-serif;
+$SERIF: 'Input Serif Regular', serif;
+
+$MONO_BOLD: 'Input Mono Bold', monospace;
+$SANS_BOLD: 'Input Sans Bold', sans-serif;
+$SERIF_BOLD: 'Input Serif Bold', serif;

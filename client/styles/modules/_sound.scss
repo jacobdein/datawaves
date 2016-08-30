@@ -1,0 +1,34 @@
+body {
+	font-family: $SANS;
+	margin: 50px auto;
+	width: 920px;
+}
+
+#data {
+	div {
+		float: left;
+		font-family: $MONO;
+		font-size: 10pt;
+		margin-top: 20px;
+		width: 230px;
+		h3 {
+			font-family: $MONO_BOLD;
+			padding-bottom: 10px;
+		}
+	}
+}
+
+#spectrogram {
+	display: block;
+}
+
+#sound_preview {
+	audio {
+		width: 100%;
+	}
+}
+
+h1 {
+	font-family: $SANS_BOLD;
+	font-size: 30px;
+}

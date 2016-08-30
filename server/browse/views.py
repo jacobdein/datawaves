@@ -7,6 +7,9 @@ from weather.models import Record
 from datetime import date, time, timedelta, datetime
 from django.db.models import Avg
 
+from metrics.models import SoundscapeSpec
+import numpy as np
+
 import os.path
 
 
@@ -35,4 +38,11 @@ def sound(request, id):
 	
 	wind_speed = "{0:.1f}".format(Record.objects.filter(date__range = (start_offset.date(), end_offset.date()), time__range = (start_offset.time(), end_offset.time())).aggregate(Avg('wind_speed'))['wind_speed__avg'])
 	
-	return render(request, 'sound.html', {'sound': sound, 'path': path, 'sound_preview': sound_preview, 'spectrogram_image': spectrogram_image, 'temperature': temperature, 'wind_speed': wind_speed})
+	#metrics
+	spec_record = SoundscapeSpec.objects.get(sound = sound.id)
+	spec = np.array(eval(spec_record.frequency_power)).astype(np.float)
+	
+	anthrophony = spec[0:2].sum()
+	biophony = spec[2:8].sum()
+	
+	return render(request, 'sound.html', {'sound': sound, 'path': path, 'sound_preview': sound_preview, 'spectrogram_image': spectrogram_image, 'temperature': temperature, 'wind_speed': wind_speed, 'anthrophony': anthrophony, 'biophony': biophony})
