@@ -33,4 +33,6 @@ def sound(request, id):
 	
 	temperature = "{0:.1f}".format(Record.objects.filter(date__range = (start_offset.date(), end_offset.date()), time__range = (start_offset.time(), end_offset.time())).aggregate(Avg('temperature'))['temperature__avg'])
 	
-	return render(request, 'sound.html', {'sound': sound, 'path': path, 'sound_preview': sound_preview, 'spectrogram_image': spectrogram_image, 'temperature': temperature})
+	wind_speed = "{0:.1f}".format(Record.objects.filter(date__range = (start_offset.date(), end_offset.date()), time__range = (start_offset.time(), end_offset.time())).aggregate(Avg('wind_speed'))['wind_speed__avg'])
+	
+	return render(request, 'sound.html', {'sound': sound, 'path': path, 'sound_preview': sound_preview, 'spectrogram_image': spectrogram_image, 'temperature': temperature, 'wind_speed': wind_speed})
