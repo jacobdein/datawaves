@@ -1,5 +1,5 @@
 body {
-	font-family: $SANS;
+	font-family: $MONO;
 	margin: 50px auto;
 	width: 920px;
 }
@@ -12,7 +12,8 @@ body {
 		margin-top: 20px;
 		width: 230px;
 		h3 {
-			font-family: $MONO_BOLD;
+			font-family: $MONO;
+			font-weight: $BOLD;
 			padding-bottom: 10px;
 		}
 	}
@@ -29,6 +30,7 @@ body {
 }
 
 h1 {
-	font-family: $SANS_BOLD;
+	font-family: $MONO;
+	font-weight: $BOLD;
 	font-size: 30px;
 }
