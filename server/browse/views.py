@@ -25,7 +25,7 @@ def sound(request, id):
 	else:
 		path = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).sound_directory, str(sound.collection.id), str(sound.site.id), sound.name + ".flac")
 	sound_preview = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).sound_preview_directory, str(sound.collection.id), str(sound.site.id), sound.notes)
-	spectrogram_image = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).spectrogram_image_directory, str(sound.collection.id), str(sound.site.id), str(sound.id) + "-large_s.png")
+	spectrogram_image = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).spectrogram_image_directory, str(sound.collection.id), str(sound.site.id), str(sound.name) + ".png")
 	
 	#weather data
 	time_offset = timedelta(hours = 1)
