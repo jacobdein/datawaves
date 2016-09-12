@@ -27,9 +27,16 @@
 					<h3>file data</h3>
 					<p>date: {{ sound.date }}</p>
 					<p>time: {{ sound.time }}</p>
-					<p>quality: {{ sound.quality }}</p>
 					<p>collection: {{ sound.collection }}</p>
 					<p>sensor: {{ sound.sensor }}</p>
+					<form method="post">
+						{% csrf_token %}
+						{{ quality_form }}
+						<input type="submit" value="submit" />
+					</form>
+					{% if quality_form_message %}
+					<p class="message_success">{{ quality_form_message }}</p>
+					{% endif %}
 				</div>
 				<div>
 					<h3>site data</h3>
@@ -40,5 +47,6 @@
 				{% include "metrics/metrics.html" %}
 			</section>	
 		</main>
+		<script src="{% static "scripts/script.js" %}"></script>
 	</body>
 </html>

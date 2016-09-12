@@ -1,15 +1,15 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from database.models import Sound, Setting
 from django.conf import settings
-
-from weather.models import Record
-from datetime import date, time, timedelta, datetime
 from django.db.models import Avg
 
+from database.models import Sound, Setting
+from weather.models import Record
 from metrics.models import SoundscapeSpec
-import numpy as np
+from .forms import QualityForm
 
+from datetime import date, time, timedelta, datetime
+import numpy as np
 import os.path
 
 
@@ -27,7 +27,7 @@ def sound(request, id):
 	sound_preview = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).sound_preview_directory, str(sound.collection.id), str(sound.site.id), sound.notes)
 	spectrogram_image = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).spectrogram_image_directory, str(sound.collection.id), str(sound.site.id), str(sound.name) + ".png")
 	
-	#weather data
+	# weather data
 	time_offset = timedelta(hours = 1)
 	recorded_datetime = datetime(sound.date.year, sound.date.month, sound.date.day, sound.time.hour, sound.time.minute, sound.time.second)
 	
@@ -38,11 +38,34 @@ def sound(request, id):
 	
 	wind_speed = "{0:.1f}".format(Record.objects.filter(date__range = (start_offset.date(), end_offset.date()), time__range = (start_offset.time(), end_offset.time())).aggregate(Avg('wind_speed'))['wind_speed__avg'])
 	
-	#metrics
+	# metrics
 	spec_record = SoundscapeSpec.objects.get(sound = sound.id)
 	spec = np.array(eval(spec_record.frequency_power)).astype(np.float)
 	
 	anthrophony = spec[0:2].sum()
 	biophony = spec[2:8].sum()
 	
-	return render(request, 'sound.html', {'sound': sound, 'path': path, 'sound_preview': sound_preview, 'spectrogram_image': spectrogram_image, 'temperature': temperature, 'wind_speed': wind_speed, 'anthrophony': anthrophony, 'biophony': biophony})
+	context = {
+		'sound': sound, 
+		'path': path, 
+		'sound_preview': sound_preview, 
+		'spectrogram_image': spectrogram_image, 
+		'temperature': temperature, 
+		'wind_speed': wind_speed, 
+		'anthrophony': anthrophony, 
+		'biophony': biophony
+	}
+	
+	# render quality form 
+	if request.method == 'POST':
+		quality_form = QualityForm(request.POST)
+		if quality_form.is_valid():
+			quality = int(quality_form.cleaned_data['quality'])
+			sound.quality = quality
+			sound.save()
+			quality_name = [ c[1] for c in Sound.QUALITY_CHOICES if c[0] == quality ][0]
+			context['quality_form_message'] = "quality updated to '{0}'".format(quality_name)
+	quality_form = QualityForm(initial = {'quality': "{0}".format(sound.quality)})
+	context['quality_form'] = quality_form
+	
+	return render(request, 'sound.html', context = context)

@@ -11,6 +11,14 @@ class Setting(models.Model):
 
 
 class Sound(models.Model):
+	
+	QUALITY_CHOICES = (
+		(0, 'none'),
+		(1, 'one'),
+		(2, 'two'),
+		(3, 'three'),
+	)
+	
 	id = models.IntegerField(primary_key = True)
 	name = models.CharField(max_length = 50)
 	site = models.ForeignKey('Site', on_delete = models.CASCADE, db_column = 'site')
@@ -18,7 +26,7 @@ class Sound(models.Model):
 	sensor = models.ForeignKey('Sensor', on_delete = models.CASCADE, db_column = 'sensor')
 	date = models.DateField()
 	time = models.TimeField()
-	quality = models.IntegerField(blank = True)
+	quality = models.IntegerField(blank = True, choices = QUALITY_CHOICES, default = 0)
 	notes = models.TextField(blank = True)
 	custom_filepath = models.CharField(max_length = 1000)
 	MD5_hash = models.CharField(max_length = 32, blank = True)
