@@ -29,10 +29,10 @@
 					<p>time: {{ sound.time }}</p>
 					<p>collection: {{ sound.collection }}</p>
 					<p>sensor: {{ sound.sensor }}</p>
-					<form method="post">
+					<form id="form_quality" method="post">
 						{% csrf_token %}
 						{{ quality_form }}
-						<input type="submit" value="submit" />
+						<input type="submit" value="update" />
 					</form>
 					{% if quality_form_message %}
 					<p class="message_success">{{ quality_form_message }}</p>
