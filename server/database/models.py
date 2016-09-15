@@ -1,4 +1,6 @@
 from django.db import models
+from signalin import settings
+import os.path
 
 
 class Setting(models.Model):
@@ -35,6 +37,11 @@ class Sound(models.Model):
 	
 	def __str__(self):
 		return "{0} - {1}".format(self.name, self.id)
+	
+	# update when .flac storage is implemented
+	def get_filepath(self):
+		return os.path.join(settings.STATICFILES_DIRS[1], Setting.objects.get(id = 1).sound_directory, 
+							str(self.collection.id), str(self.site.id), self.name + '.wav')
 
 
 class Site(models.Model):
