@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class SoundscapeSpec(models.Model, ):
+class SoundscapeSpec(models.Model):
 	id = models.AutoField(primary_key = True)
 	frequency_power = models.CharField(max_length = 500)
 	created = models.DateTimeField(auto_now_add = True)
