@@ -1,6 +1,39 @@
 from django.db import models
 
 
+class NDSI(models.Model):
+	id = models.AutoField(primary_key = True)
+	ndsi_left = models.FloatField()
+	ndsi_right = models.FloatField()
+	created = models.DateTimeField(auto_now_add = True)
+	modified = models.DateTimeField(auto_now = True)
+	sound = models.ForeignKey('database.Sound', on_delete = models.CASCADE, db_column = 'sound')
+	analysis = models.ForeignKey('Analysis', on_delete = models.SET_NULL, null = True, db_column = 'analysis')
+	
+	def __str__(self):
+		return "{0} - {1}".format(self.id, self.sound.name)
+	
+	class Meta():
+		verbose_name = 'NDSI'
+		verbose_name_plural = 'NDSIs'
+
+
+class BioacousticIndex(models.Model):
+	id = models.AutoField(primary_key = True)
+	bai_left = models.FloatField()
+	bai_right = models.FloatField()
+	created = models.DateTimeField(auto_now_add = True)
+	modified = models.DateTimeField(auto_now = True)
+	sound = models.ForeignKey('database.Sound', on_delete = models.CASCADE, db_column = 'sound')
+	analysis = models.ForeignKey('Analysis', on_delete = models.SET_NULL, null = True, db_column = 'analysis')
+	
+	def __str__(self):
+		return "{0} - {1}".format(self.id, self.sound.name)
+	
+	class Meta():
+		verbose_name_plural = 'bioacoustic complexity indices'
+
+
 class AcousticComplexityIndex(models.Model):
 	id = models.AutoField(primary_key = True)
 	aci_left = models.FloatField()
