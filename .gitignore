@@ -1,8 +1,10 @@
 # OS X
 .DS_Store
 
-# Django
+# Development
 venv
+environment.yml
+nacoustik
 
 # gulp
 node_modules
