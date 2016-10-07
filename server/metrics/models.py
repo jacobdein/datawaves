@@ -74,6 +74,20 @@ class SoundExposureLevel(models.Model):
 		return "{0} - {1}".format(self.id, self.sound.name)
 
 
+class PowerSpectrumSum(models.Model):
+	id = models.AutoField(primary_key = True)
+	anthrophony = models.FloatField()
+	biophony = models.FloatField()
+	total = models.FloatField()
+	created = models.DateTimeField(auto_now_add = True)
+	modified = models.DateTimeField(auto_now = True)
+	sound = models.ForeignKey('database.Sound', on_delete = models.CASCADE, db_column = 'sound')
+	analysis = models.ForeignKey('Analysis', on_delete = models.SET_NULL, null = True, db_column = 'analysis')
+	
+	def __str__(self):
+		return "{0} - {1}".format(self.id, self.sound.name)
+
+
 class Analysis(models.Model):
 	
 	class Meta:
