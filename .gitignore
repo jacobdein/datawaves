@@ -3,7 +3,6 @@
 
 # Development
 venv
-environment.yml
 nacoustik
 
 # gulp
@@ -11,7 +10,8 @@ node_modules
 
 # local assets
 builds/
-client/media/
+client/media/*
+!client/media/.gitkeep
 
 # sass
 .sass-cache/
