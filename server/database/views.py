@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("signalin database index")
+    return HttpResponse("datawaves database index")
     

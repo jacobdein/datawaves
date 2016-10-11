@@ -1,7 +1,7 @@
 /**
  *
- *  gulpfile for signalin
- *  Copyright 2016. All rights reserved.
+ *  gulpfile for datawaves
+ * 
  *
  *
  *

@@ -1,5 +1,5 @@
 from django.db import models
-from signalin import settings
+from datawaves import settings
 import os.path
 
 
