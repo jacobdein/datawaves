@@ -1,0 +1,20 @@
+# dependancies for development environment
+# run: $ conda env create
+
+name: datawaves
+dependencies:
+  - bokeh
+  - django
+  - jupyter
+  - numpy
+  - scipy
+  - numba
+  - matplotlib
+  - psutil
+  - pandas
+
+# The following packages must be pip installed:
+# pyprind
+# sox
+# mysqlclient
+# nacoustik
