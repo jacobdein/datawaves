@@ -23,3 +23,20 @@ class LandCoverArea(models.Model):
 	
 	def __str__(self):
 		return "{0} - {1}".format(self.site.name, self.included_area)
+		
+
+class NaturalnessArea(models.Model):
+	id = models.AutoField(primary_key = True)
+	included_area = models.CharField(max_length = 50)
+	type_1 = models.FloatField(blank = True)
+	type_2 = models.FloatField(blank = True)
+	type_3 = models.FloatField(blank = True)
+	type_4 = models.FloatField(blank = True)
+	type_5 = models.FloatField(blank = True)
+	type_6 = models.FloatField(blank = True)
+	type_7 = models.FloatField(blank = True)
+	mean = models.FloatField(blank = True)
+	site = models.ForeignKey('database.Site', on_delete = models.CASCADE, db_column = 'site')
+	
+	def __str__(self):
+		return "{0} - {1}".format(self.site.name, self.included_area)
