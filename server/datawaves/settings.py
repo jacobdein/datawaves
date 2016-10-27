@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis'
 ]
 
 MIDDLEWARE = [
@@ -86,14 +87,14 @@ WSGI_APPLICATION = 'datawaves.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'datawaves',
         'HOST': 'localhost',
         'USER': 'datawaves',
         'PASSWORD': 'datawaves',
-        'OPTIONS': {
-	        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+#        'OPTIONS': {
+#	        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#        }
     }
 }
 

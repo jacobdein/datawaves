@@ -4,6 +4,7 @@
 # Development
 venv
 nacoustik
+data/
 
 # gulp
 node_modules

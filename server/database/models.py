@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.gis.db import models
 from datawaves import settings
 import os.path
 
@@ -50,6 +51,7 @@ class Site(models.Model):
 	lat = models.FloatField(blank = True)
 	lon = models.FloatField(blank = True)
 	elevation = models.FloatField(blank = True)
+	shape = models.PointField(srid = 31254)
 	
 	def __str__(self):
 		return "{0} - {1}".format(self.id, self.name)

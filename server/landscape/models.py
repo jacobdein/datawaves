@@ -1,4 +1,10 @@
-from django.db import models
+#from django.db import models
+from django.contrib.gis.db import models
+
+
+class LandCover(models.Model):
+	cover_type = models.IntegerField()
+	shape = models.MultiPolygonField(srid = 31254)
 
 
 class LandCoverArea(models.Model):

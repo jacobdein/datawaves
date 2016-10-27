@@ -12,9 +12,11 @@ dependencies:
   - matplotlib
   - psutil
   - pandas
+  - psycopg2
+  - fiona
 
 # The following packages must be pip installed:
 # pyprind
 # sox
-# mysqlclient
+# mysqlclient (if mysql)
 # nacoustik
