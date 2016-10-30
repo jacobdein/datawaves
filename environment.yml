@@ -12,8 +12,10 @@ dependencies:
   - matplotlib
   - psutil
   - pandas
+  # if postgres
   - psycopg2
   - fiona
+  - pyproj
 
 # The following packages must be pip installed:
 # pyprind

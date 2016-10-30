@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 	'browse.apps.BrowseConfig',
 	'database.apps.DatabaseConfig',
+	'geo.apps.GeoConfig',
 	'landscape.apps.LandscapeConfig',
 	'metrics.apps.MetricsConfig',
 	'utilities.apps.UtilitiesConfig',
