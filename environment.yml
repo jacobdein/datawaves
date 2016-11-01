@@ -22,3 +22,4 @@ dependencies:
 # sox
 # mysqlclient (if mysql)
 # nacoustik
+# geopandas
