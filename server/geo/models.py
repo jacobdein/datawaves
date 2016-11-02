@@ -20,3 +20,20 @@ class SampleLocation(models.Model):
 	
 	def __str__(self):
 		return "{0} - land: {1}".format(self.id, self.landcover)
+
+
+# Too many issues with rasters, revisit
+#class Raster(models.Model):
+#	name = models.CharField(max_length = 50)
+#	raster = models.RasterField(srid = 31254)
+#	
+#	def __str__(self):
+#		return "{0} - {1}".format(self.id, self.name)
+
+
+class Raster(models.Model):
+	name = models.CharField(max_length = 50)
+	filepath = models.CharField(max_length = 250)
+	
+	def __str__(self):
+		return "{0} - {1}".format(self.id, self.name)

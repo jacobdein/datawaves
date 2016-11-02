@@ -16,6 +16,7 @@ dependencies:
   - psycopg2
   - fiona
   - pyproj
+  - rasterio
 
 # The following packages must be pip installed:
 # pyprind
