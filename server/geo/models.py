@@ -37,3 +37,9 @@ class Raster(models.Model):
 	
 	def __str__(self):
 		return "{0} - {1}".format(self.id, self.name)
+
+
+class LandCoverType(models.Model):
+	id = models.IntegerField(primary_key = True)
+	name = models.CharField(max_length = 50)
+	color = models.CharField(max_length = 7)
