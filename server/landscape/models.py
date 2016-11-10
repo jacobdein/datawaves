@@ -46,3 +46,8 @@ class NaturalnessArea(models.Model):
 	
 	def __str__(self):
 		return "{0} - {1}".format(self.site.name, self.included_area)
+
+
+class LandCoverTypeMap(models.Model):
+	lisa = models.IntegerField()
+	corine = models.IntegerField()
