@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.gis.db import models
 from datawaves import settings
 import os.path
+from datetime import datetime
 
 
 class Setting(models.Model):
@@ -43,6 +44,9 @@ class Sound(models.Model):
 	def get_filepath(self):
 		return os.path.join(settings.STATICFILES_DIRS[1], Setting.objects.get(id = 1).sound_directory, 
 							str(self.collection.id), str(self.site.id), self.name + '.wav')
+	# return a datetime from the 'date' and 'time' fields
+	def get_datetime(self):
+		return datetime(self.date.year, self.date.month, self.date.day, self.time.hour, self.time.minute, self.time.second)
 
 
 class Site(models.Model):
