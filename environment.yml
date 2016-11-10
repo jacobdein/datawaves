@@ -17,6 +17,10 @@ dependencies:
   - fiona
   - pyproj
   - rasterio
+  - seaborn
+  - mpld3
+  - statsmodels
+  - pymc3
 
 # The following packages must be pip installed:
 # pyprind
