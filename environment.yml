@@ -1,8 +1,11 @@
 # dependancies for development environment
-# run: $ conda env create
+# run: $ conda env create -f environment.yml
 
 name: datawaves
+channels:
+  - conda-forge
 dependencies:
+  - python=3.5
   - bokeh
   - django
   - jupyter
@@ -21,6 +24,9 @@ dependencies:
   - mpld3
   - statsmodels
   - pymc3
+  - pillow
+  - h5py
+  - scikit-learn
 
 # The following packages must be pip installed:
 # pyprind
@@ -28,3 +34,6 @@ dependencies:
 # mysqlclient (if mysql)
 # nacoustik
 # geopandas
+# overpy
+# django-extensions
+# pymorton
