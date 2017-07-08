@@ -123,6 +123,7 @@ class SoundscapeRatio(models.Model):
 	id = models.AutoField(primary_key = True)
 	anthrophony = models.FloatField()
 	biophony = models.FloatField()
+	biophony_count = models.IntegerField(null = True)
 	ratio = models.FloatField()
 	created = models.DateTimeField(auto_now_add = True)
 	modified = models.DateTimeField(auto_now = True)
