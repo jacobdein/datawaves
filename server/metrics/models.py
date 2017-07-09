@@ -135,6 +135,17 @@ class SoundscapeRatio(models.Model):
 	
 	def __str__(self):
 		return "{0} - {1}".format(self.id, self.sound.name)
+	
+class BiophonyPercent(models.Model):
+	id = models.AutoField(primary_key = True)
+	biophony_percent = models.FloatField()
+	created = models.DateTimeField(auto_now_add = True)
+	modified = models.DateTimeField(auto_now = True)
+	sound = models.ForeignKey('database.Sound', on_delete = models.CASCADE, db_column = 'sound')
+	analysis = models.ForeignKey('Analysis', on_delete = models.SET_NULL, null = True, db_column = 'analysis')
+	
+	def __str__(self):
+		return "{0} - {1}".format(self.id, self.sound.name)
 
 
 class Analysis(models.Model):
