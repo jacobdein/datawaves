@@ -68,7 +68,10 @@ class SoundscapeSpec(models.Model):
 
 class SoundExposureLevel(models.Model):
 	id = models.AutoField(primary_key = True)
-	sel = models.CharField(max_length = 500)
+	sel = models.FloatField(null = True)
+	sel_bins = models.CharField(max_length = 5000, null = True)
+	anthrophony = models.FloatField(null = True)
+	biophony = models.FloatField(null = True)
 	created = models.DateTimeField(auto_now_add = True)
 	modified = models.DateTimeField(auto_now = True)
 	sound = models.ForeignKey('database.Sound', on_delete = models.CASCADE, db_column = 'sound')
