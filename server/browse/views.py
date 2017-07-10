@@ -5,7 +5,7 @@ from django.db.models import Avg
 
 from database.models import Sound, Setting
 from weather.models import Record
-from metrics.models import SoundscapeSpec, PowerSpectrumSum
+from metrics.models import SoundExposureLevelAdvanced
 from .forms import QualityForm
 
 from datetime import date, time, timedelta, datetime
@@ -26,7 +26,7 @@ def sound(request, id):
 		path = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).sound_directory, str(sound.collection.id), str(sound.site.id), sound.name + ".flac")
 	sound_preview = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).sound_preview_directory, str(sound.collection.id), str(sound.site.id), sound.notes)
 	spectrogram_image = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).spectrogram_image_directory, str(sound.collection.id), str(sound.site.id), str(sound.name) + ".png")
-	spectrogram_image_ale = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).spectrogram_image_directory, 'ale', str(sound.collection.id), str(sound.site.id), str(sound.name) + ".png")
+	spectrogram_image_ale = os.path.join(settings.STATIC_URL, Setting.objects.get(id = 1).spectrogram_image_directory, 'ale2', str(sound.collection.id), str(sound.site.id), str(sound.name) + ".png")
 	
 	# weather data
 	time_offset = timedelta(hours = 1)
@@ -40,12 +40,9 @@ def sound(request, id):
 	wind_speed = "{0:.1f}".format(Record.objects.filter(date__range = (start_offset.date(), end_offset.date()), time__range = (start_offset.time(), end_offset.time())).aggregate(Avg('wind_speed'))['wind_speed__avg'])
 	
 	# metrics
-	spec_record = SoundscapeSpec.objects.get(sound = sound.id)
-	spec = np.array(eval(spec_record.frequency_power)).astype(np.float)
-	pss_record = PowerSpectrumSum.objects.get(sound = sound.id)
-	anthrophony = "{0:.4f}".format(pss_record.anthrophony)
-	biophony = "{0:.4f}".format(pss_record.biophony)
-	total = "{0:.4f}".format(pss_record.total)
+	sel_record = SoundExposureLevelAdvanced.objects.get(sound = sound.id)
+	anthrophony = "{0:.4f}".format(sel_record.anthrophony)
+	biophony = "{0:.4f}".format(sel_record.biophony)
 	
 	#anthrophony = spec[0:2].sum()
 	#biophony = spec[2:8].sum()
@@ -60,7 +57,6 @@ def sound(request, id):
 		'wind_speed': wind_speed, 
 		'anthrophony': anthrophony, 
 		'biophony': biophony,
-		'total': total
 	}
 	
 	# render quality form 
