@@ -27,6 +27,7 @@ dependencies:
   - pillow
   - h5py
   - scikit-learn
+  - scikit-image
 
 # The following packages must be pip installed:
 # pyprind
